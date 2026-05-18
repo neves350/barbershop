@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Worker {
+  id        String    @id @default(uuid())
+  name      String
+  initials  String
+  avatarUrl String?   @map("avatar_url")
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now()) @map("created_at")
+  bookings  Booking[]
+
+  @@map("workers")
+}
+
+model Service {
+  id          String           @id @default(uuid())
+  name        String
+  description String
+  price       Decimal          @db.Decimal(10, 2)
+  duration    Int
+  category    String
+  active      Boolean          @default(true)
+  createdAt   DateTime         @default(now()) @map("created_at")
+  bookings    BookingService[]
+
+  @@map("services")
+}
+
+model Booking {
+  id         String           @id @default(uuid())
+  clientName String           @map("client_name")
+  phone      String
+  email      String?
+  notes      String?
+  source     String?
+  date       DateTime
+  status     BookingStatus    @default(PENDING)
+  workerId   String?          @map("worker_id")
+  worker     Worker?          @relation(fields: [workerId], references: [id])
+  services   BookingService[]
+  createdAt  DateTime         @default(now()) @map("created_at")
+  updatedAt  DateTime         @updatedAt @map("updated_at")
+
+  @@map("bookings")
+}
+
+model BookingService {
+  bookingId String  @map("booking_id")
+  serviceId String  @map("service_id")
+  booking   Booking @relation(fields: [bookingId], references: [id])
+  service   Service @relation(fields: [serviceId], references: [id])
+
+  @@id([bookingId, serviceId])
+  @@map("booking_services")
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
