@@ -24,7 +24,11 @@ async function seed() {
 	}
 }
 
-seed().then(() => {
-	console.log('Database seeded!')
-	prisma.$disconnect()
-})
+seed()
+	.catch((e) => {
+		console.error(e)
+		process.exit(1)
+	})
+	.finally(async () => {
+		await prisma.$disconnect()
+	})
