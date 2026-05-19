@@ -12,7 +12,7 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "./prismaNamespace.js"
+import type * as Prisma from "./prismaNamespace"
 
 
 const config: runtime.GetPrismaClientConfig = {
@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.8.0",
   "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Worker {\n  id        String    @id @default(uuid())\n  name      String\n  initials  String\n  avatarUrl String?   @map(\"avatar_url\")\n  active    Boolean   @default(true)\n  createdAt DateTime  @default(now()) @map(\"created_at\")\n  bookings  Booking[]\n\n  @@map(\"workers\")\n}\n\nmodel Service {\n  id          String           @id @default(uuid())\n  name        String\n  description String\n  price       Decimal          @db.Decimal(10, 2)\n  duration    Int\n  category    String\n  active      Boolean          @default(true)\n  createdAt   DateTime         @default(now()) @map(\"created_at\")\n  bookings    BookingService[]\n\n  @@map(\"services\")\n}\n\nmodel Booking {\n  id         String           @id @default(uuid())\n  clientName String           @map(\"client_name\")\n  phone      String\n  email      String?\n  notes      String?\n  source     String?\n  date       DateTime\n  status     BookingStatus    @default(PENDING)\n  workerId   String?          @map(\"worker_id\")\n  worker     Worker?          @relation(fields: [workerId], references: [id])\n  services   BookingService[]\n  createdAt  DateTime         @default(now()) @map(\"created_at\")\n  updatedAt  DateTime         @updatedAt @map(\"updated_at\")\n\n  @@map(\"bookings\")\n}\n\nmodel BookingService {\n  bookingId String  @map(\"booking_id\")\n  serviceId String  @map(\"service_id\")\n  booking   Booking @relation(fields: [bookingId], references: [id])\n  service   Service @relation(fields: [serviceId], references: [id])\n\n  @@id([bookingId, serviceId])\n  @@map(\"booking_services\")\n}\n\nenum BookingStatus {\n  PENDING\n  CONFIRMED\n  CANCELLED\n  COMPLETED\n}\n",
+  "inlineSchema": "generator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Worker {\n  id        String    @id @default(uuid())\n  name      String\n  initials  String\n  avatarUrl String?   @map(\"avatar_url\")\n  active    Boolean   @default(true)\n  createdAt DateTime  @default(now()) @map(\"created_at\")\n  bookings  Booking[]\n\n  @@map(\"workers\")\n}\n\nmodel Service {\n  id          String           @id @default(uuid())\n  name        String\n  description String\n  price       Decimal          @db.Decimal(10, 2)\n  duration    Int\n  category    String\n  active      Boolean          @default(true)\n  createdAt   DateTime         @default(now()) @map(\"created_at\")\n  bookings    BookingService[]\n\n  @@map(\"services\")\n}\n\nmodel Booking {\n  id         String           @id @default(uuid())\n  clientName String           @map(\"client_name\")\n  phone      String\n  email      String?\n  notes      String?\n  source     String?\n  date       DateTime\n  status     BookingStatus    @default(PENDING)\n  workerId   String?          @map(\"worker_id\")\n  worker     Worker?          @relation(fields: [workerId], references: [id])\n  services   BookingService[]\n  createdAt  DateTime         @default(now()) @map(\"created_at\")\n  updatedAt  DateTime         @updatedAt @map(\"updated_at\")\n\n  @@map(\"bookings\")\n}\n\nmodel BookingService {\n  bookingId String  @map(\"booking_id\")\n  serviceId String  @map(\"service_id\")\n  booking   Booking @relation(fields: [bookingId], references: [id])\n  service   Service @relation(fields: [serviceId], references: [id])\n\n  @@id([bookingId, serviceId])\n  @@map(\"booking_services\")\n}\n\nenum BookingStatus {\n  PENDING\n  CONFIRMED\n  CANCELLED\n  COMPLETED\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -45,10 +45,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.js"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.js")
     return await decodeBase64AsWasm(wasm)
   },
 
