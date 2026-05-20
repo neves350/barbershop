@@ -28,6 +28,7 @@ model Service {
   duration    Int
   category    ServiceCategory
   active      Boolean          @default(true)
+  featured    Boolean          @default(false)
   createdAt   DateTime         @default(now()) @map("created_at")
   bookings    BookingService[]
 

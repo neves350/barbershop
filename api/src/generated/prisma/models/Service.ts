@@ -44,6 +44,7 @@ export type ServiceMinAggregateOutputType = {
   duration: number | null
   category: $Enums.ServiceCategory | null
   active: boolean | null
+  featured: boolean | null
   createdAt: Date | null
 }
 
@@ -55,6 +56,7 @@ export type ServiceMaxAggregateOutputType = {
   duration: number | null
   category: $Enums.ServiceCategory | null
   active: boolean | null
+  featured: boolean | null
   createdAt: Date | null
 }
 
@@ -66,6 +68,7 @@ export type ServiceCountAggregateOutputType = {
   duration: number
   category: number
   active: number
+  featured: number
   createdAt: number
   _all: number
 }
@@ -89,6 +92,7 @@ export type ServiceMinAggregateInputType = {
   duration?: true
   category?: true
   active?: true
+  featured?: true
   createdAt?: true
 }
 
@@ -100,6 +104,7 @@ export type ServiceMaxAggregateInputType = {
   duration?: true
   category?: true
   active?: true
+  featured?: true
   createdAt?: true
 }
 
@@ -111,6 +116,7 @@ export type ServiceCountAggregateInputType = {
   duration?: true
   category?: true
   active?: true
+  featured?: true
   createdAt?: true
   _all?: true
 }
@@ -209,6 +215,7 @@ export type ServiceGroupByOutputType = {
   duration: number
   category: $Enums.ServiceCategory
   active: boolean
+  featured: boolean
   createdAt: Date
   _count: ServiceCountAggregateOutputType | null
   _avg: ServiceAvgAggregateOutputType | null
@@ -243,6 +250,7 @@ export type ServiceWhereInput = {
   duration?: Prisma.IntFilter<"Service"> | number
   category?: Prisma.EnumServiceCategoryFilter<"Service"> | $Enums.ServiceCategory
   active?: Prisma.BoolFilter<"Service"> | boolean
+  featured?: Prisma.BoolFilter<"Service"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   bookings?: Prisma.BookingServiceListRelationFilter
 }
@@ -255,6 +263,7 @@ export type ServiceOrderByWithRelationInput = {
   duration?: Prisma.SortOrder
   category?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   bookings?: Prisma.BookingServiceOrderByRelationAggregateInput
 }
@@ -270,6 +279,7 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   duration?: Prisma.IntFilter<"Service"> | number
   category?: Prisma.EnumServiceCategoryFilter<"Service"> | $Enums.ServiceCategory
   active?: Prisma.BoolFilter<"Service"> | boolean
+  featured?: Prisma.BoolFilter<"Service"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   bookings?: Prisma.BookingServiceListRelationFilter
 }, "id">
@@ -282,6 +292,7 @@ export type ServiceOrderByWithAggregationInput = {
   duration?: Prisma.SortOrder
   category?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.ServiceCountOrderByAggregateInput
   _avg?: Prisma.ServiceAvgOrderByAggregateInput
@@ -301,6 +312,7 @@ export type ServiceScalarWhereWithAggregatesInput = {
   duration?: Prisma.IntWithAggregatesFilter<"Service"> | number
   category?: Prisma.EnumServiceCategoryWithAggregatesFilter<"Service"> | $Enums.ServiceCategory
   active?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
+  featured?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
 }
 
@@ -312,6 +324,7 @@ export type ServiceCreateInput = {
   duration: number
   category: $Enums.ServiceCategory
   active?: boolean
+  featured?: boolean
   createdAt?: Date | string
   bookings?: Prisma.BookingServiceCreateNestedManyWithoutServiceInput
 }
@@ -324,6 +337,7 @@ export type ServiceUncheckedCreateInput = {
   duration: number
   category: $Enums.ServiceCategory
   active?: boolean
+  featured?: boolean
   createdAt?: Date | string
   bookings?: Prisma.BookingServiceUncheckedCreateNestedManyWithoutServiceInput
 }
@@ -336,6 +350,7 @@ export type ServiceUpdateInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingServiceUpdateManyWithoutServiceNestedInput
 }
@@ -348,6 +363,7 @@ export type ServiceUncheckedUpdateInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingServiceUncheckedUpdateManyWithoutServiceNestedInput
 }
@@ -360,6 +376,7 @@ export type ServiceCreateManyInput = {
   duration: number
   category: $Enums.ServiceCategory
   active?: boolean
+  featured?: boolean
   createdAt?: Date | string
 }
 
@@ -371,6 +388,7 @@ export type ServiceUpdateManyMutationInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -382,6 +400,7 @@ export type ServiceUncheckedUpdateManyInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -393,6 +412,7 @@ export type ServiceCountOrderByAggregateInput = {
   duration?: Prisma.SortOrder
   category?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -409,6 +429,7 @@ export type ServiceMaxOrderByAggregateInput = {
   duration?: Prisma.SortOrder
   category?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -420,6 +441,7 @@ export type ServiceMinOrderByAggregateInput = {
   duration?: Prisma.SortOrder
   category?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -475,6 +497,7 @@ export type ServiceCreateWithoutBookingsInput = {
   duration: number
   category: $Enums.ServiceCategory
   active?: boolean
+  featured?: boolean
   createdAt?: Date | string
 }
 
@@ -486,6 +509,7 @@ export type ServiceUncheckedCreateWithoutBookingsInput = {
   duration: number
   category: $Enums.ServiceCategory
   active?: boolean
+  featured?: boolean
   createdAt?: Date | string
 }
 
@@ -513,6 +537,7 @@ export type ServiceUpdateWithoutBookingsInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -524,6 +549,7 @@ export type ServiceUncheckedUpdateWithoutBookingsInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.EnumServiceCategoryFieldUpdateOperationsInput | $Enums.ServiceCategory
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -566,6 +592,7 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   duration?: boolean
   category?: boolean
   active?: boolean
+  featured?: boolean
   createdAt?: boolean
   bookings?: boolean | Prisma.Service$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
@@ -579,6 +606,7 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   duration?: boolean
   category?: boolean
   active?: boolean
+  featured?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["service"]>
 
@@ -590,6 +618,7 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   duration?: boolean
   category?: boolean
   active?: boolean
+  featured?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["service"]>
 
@@ -601,10 +630,11 @@ export type ServiceSelectScalar = {
   duration?: boolean
   category?: boolean
   active?: boolean
+  featured?: boolean
   createdAt?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "duration" | "category" | "active" | "createdAt", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "duration" | "category" | "active" | "featured" | "createdAt", ExtArgs["result"]["service"]>
 export type ServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | Prisma.Service$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
@@ -625,6 +655,7 @@ export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     duration: number
     category: $Enums.ServiceCategory
     active: boolean
+    featured: boolean
     createdAt: Date
   }, ExtArgs["result"]["service"]>
   composites: {}
@@ -1057,6 +1088,7 @@ export interface ServiceFieldRefs {
   readonly duration: Prisma.FieldRef<"Service", 'Int'>
   readonly category: Prisma.FieldRef<"Service", 'ServiceCategory'>
   readonly active: Prisma.FieldRef<"Service", 'Boolean'>
+  readonly featured: Prisma.FieldRef<"Service", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Service", 'DateTime'>
 }
     

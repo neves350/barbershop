@@ -19,6 +19,7 @@ async function seed() {
 				price: services.price,
 				category: services.category,
 				duration: services.duration,
+				featured: services.featured,
 			},
 		})
 	}
