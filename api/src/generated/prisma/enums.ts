@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const ServiceCategory = {
+  HAIR: 'HAIR',
+  COLORING: 'COLORING',
+  TREATMENTS: 'TREATMENTS',
+  AESTHETICS: 'AESTHETICS'
+} as const
+
+export type ServiceCategory = (typeof ServiceCategory)[keyof typeof ServiceCategory]
+
+
 export const BookingStatus = {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',

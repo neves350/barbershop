@@ -26,12 +26,19 @@ model Service {
   description String
   price       Decimal          @db.Decimal(10, 2)
   duration    Int
-  category    String
+  category    ServiceCategory
   active      Boolean          @default(true)
   createdAt   DateTime         @default(now()) @map("created_at")
   bookings    BookingService[]
 
   @@map("services")
+}
+
+enum ServiceCategory {
+  HAIR
+  COLORING
+  TREATMENTS
+  AESTHETICS
 }
 
 model Booking {
