@@ -13,4 +13,11 @@ export class ServiceService {
 			},
 		})
 	}
+
+	async findFeatured() {
+		return this.prisma.service.findMany({
+			where: { featured: true, active: true },
+			take: 4,
+		})
+	}
 }

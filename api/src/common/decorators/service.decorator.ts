@@ -37,3 +37,32 @@ export function ApiFindAllResponses() {
 		}),
 	)
 }
+
+export function ApiFindFeaturedResponses() {
+	return applyDecorators(
+		ApiResponse({
+			status: 200,
+			description: 'Up to 4 featured services retrieved successfully',
+			schema: {
+				example: [
+					{
+						id: '46cf0946-4bd2-4154-a214-b5935b319428',
+						name: 'Corte de cabelo',
+						description:
+							'Corte personalizado para o teu tipo de cabelo e estilo de vida.',
+						price: '35.00',
+						duration: 45,
+						category: 'HAIR',
+						active: true,
+						featured: true,
+						createdAt: '2026-05-20T15:37:55.038Z',
+					},
+				],
+			},
+		}),
+		ApiResponse({
+			status: 200,
+			description: 'Empty array if no featured services are set.',
+		}),
+	)
+}
