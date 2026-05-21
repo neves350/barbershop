@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { ServiceCategory } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateServiceDto } from './dtos/create-service.dto'
+import { UpdateServiceDto } from './dtos/update-service.dto'
 
 @Injectable()
 export class ServiceService {
@@ -47,5 +48,29 @@ export class ServiceService {
 		if (!service) throw new NotFoundException('Service not found')
 
 		return service
+	}
+
+	async update(dto: UpdateServiceDto, serviceId: string, supabaseId: string) {
+		const worker = await this.prisma.worker.findUniqueOrThrow({
+			where: { supabaseId },
+		})
+
+		const service = await this.prisma.service.findFirst({
+			where: {
+				id: serviceId,
+				workerId: worker.id,
+			},
+		})
+
+		if (!service) throw new NotFoundException('Service not found')
+
+		const updatedService = await this.prisma.service.update({
+			where: {
+				id: serviceId,
+			},
+			data: dto,
+		})
+
+		return updatedService
 	}
 }

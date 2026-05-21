@@ -102,6 +102,45 @@ export function ApiFindOneResponses() {
 	)
 }
 
+export function ApiUpdateServiceResponses() {
+	return applyDecorators(
+		ApiResponse({
+			status: 200,
+			description: 'Service updated successfully',
+			schema: {
+				example: {
+					id: '0b60e8dd-14ec-49c2-9131-8a7ebb6b28bf',
+					name: 'Depil. 1/2 Perna',
+					description: 'Depilação de meia perna.',
+					price: '25.00',
+					duration: 30,
+					category: 'AESTHETICS',
+					active: true,
+					featured: true,
+					workerId: 'e3b0c442-98fc-1c14-9afb-f4c8996fb924',
+					createdAt: '2026-05-20T21:38:34.797Z',
+				},
+			},
+		}),
+		ApiResponse({
+			status: 400,
+			description: 'Validation error — invalid or missing fields.',
+		}),
+		ApiResponse({
+			status: 401,
+			description: 'Unauthorized — invalid or missing bearer token.',
+		}),
+		ApiResponse({
+			status: 403,
+			description: 'Forbidden — service does not belong to this worker.',
+		}),
+		ApiResponse({
+			status: 404,
+			description: 'Service not found.',
+		}),
+	)
+}
+
 export function ApiFindFeaturedResponses() {
 	return applyDecorators(
 		ApiResponse({

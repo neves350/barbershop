@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	Param,
+	Patch,
 	Post,
 	Query,
 	UseGuards,
@@ -14,10 +15,12 @@ import {
 	ApiFindAllResponses,
 	ApiFindFeaturedResponses,
 	ApiFindOneResponses,
+	ApiUpdateServiceResponses,
 } from 'src/common/decorators/service.decorator'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { CreateServiceDto } from './dtos/create-service.dto'
 import { QueryServiceDto } from './dtos/query-service.dto'
+import { UpdateServiceDto } from './dtos/update-service.dto'
 import { ServiceService } from './service.service'
 
 @ApiTags('Services')
@@ -60,5 +63,18 @@ export class ServiceController {
 	@ApiFindOneResponses()
 	async findOne(@Param('id') id: string, @CurrentWorker() worker) {
 		return this.serviceService.findOne(id, worker.supabaseId)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Patch('services/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Update a service by id' })
+	@ApiUpdateServiceResponses()
+	async update(
+		@Param('id') id: string,
+		@Body() dto: UpdateServiceDto,
+		@CurrentWorker() worker,
+	) {
+		return this.serviceService.update(dto, id, worker.supabaseId)
 	}
 }
