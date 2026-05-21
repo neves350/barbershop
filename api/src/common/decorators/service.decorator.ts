@@ -71,6 +71,37 @@ export function ApiFindAllResponses() {
 	)
 }
 
+export function ApiFindOneResponses() {
+	return applyDecorators(
+		ApiResponse({
+			status: 200,
+			description: 'Service retrieved successfully',
+			schema: {
+				example: {
+					id: '0b60e8dd-14ec-49c2-9131-8a7ebb6b28bf',
+					name: 'Depil. 1/2 Perna',
+					description: 'Depilação de meia perna.',
+					price: '0',
+					duration: 30,
+					category: 'AESTHETICS',
+					active: true,
+					featured: true,
+					workerId: null,
+					createdAt: '2026-05-20T21:38:34.797Z',
+				},
+			},
+		}),
+		ApiResponse({
+			status: 401,
+			description: 'Unauthorized — invalid or missing bearer token.',
+		}),
+		ApiResponse({
+			status: 404,
+			description: 'Service not found.',
+		}),
+	)
+}
+
 export function ApiFindFeaturedResponses() {
 	return applyDecorators(
 		ApiResponse({

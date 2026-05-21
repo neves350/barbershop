@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { ServiceCategory } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateServiceDto } from './dtos/create-service.dto'
@@ -30,5 +30,22 @@ export class ServiceService {
 			where: { featured: true, active: true },
 			take: 4,
 		})
+	}
+
+	async findOne(serviceId: string, supabaseId: string) {
+		const worker = await this.prisma.worker.findUniqueOrThrow({
+			where: { supabaseId },
+		})
+
+		const service = await this.prisma.service.findFirst({
+			where: {
+				id: serviceId,
+				workerId: worker.id,
+			},
+		})
+
+		if (!service) throw new NotFoundException('Service not found')
+
+		return service
 	}
 }

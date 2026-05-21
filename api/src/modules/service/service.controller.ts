@@ -1,10 +1,19 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Post,
+	Query,
+	UseGuards,
+} from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { CurrentWorker } from 'src/common/decorators/current-worker.decorator'
 import {
 	ApiCreateServiceResponses,
 	ApiFindAllResponses,
 	ApiFindFeaturedResponses,
+	ApiFindOneResponses,
 } from 'src/common/decorators/service.decorator'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { CreateServiceDto } from './dtos/create-service.dto'
@@ -42,5 +51,14 @@ export class ServiceController {
 	@ApiFindFeaturedResponses()
 	async findFeatured() {
 		return this.serviceService.findFeatured()
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Get('services/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Return a specific service' })
+	@ApiFindOneResponses()
+	async findOne(@Param('id') id: string, @CurrentWorker() worker) {
+		return this.serviceService.findOne(id, worker.supabaseId)
 	}
 }
