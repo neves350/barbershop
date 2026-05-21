@@ -141,6 +141,33 @@ export function ApiUpdateServiceResponses() {
 	)
 }
 
+export function ApiDeleteServiceResponses() {
+	return applyDecorators(
+		ApiResponse({
+			status: 200,
+			description: 'Service deleted successfully',
+			schema: {
+				example: {
+					message: 'Service deleted successfully',
+					success: true,
+				},
+			},
+		}),
+		ApiResponse({
+			status: 401,
+			description: 'Unauthorized — invalid or missing bearer token.',
+		}),
+		ApiResponse({
+			status: 403,
+			description: 'Forbidden — service does not belong to this worker.',
+		}),
+		ApiResponse({
+			status: 404,
+			description: 'Service not found.',
+		}),
+	)
+}
+
 export function ApiFindFeaturedResponses() {
 	return applyDecorators(
 		ApiResponse({

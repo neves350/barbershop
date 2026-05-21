@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	Get,
 	Param,
 	Patch,
@@ -12,6 +13,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { CurrentWorker } from 'src/common/decorators/current-worker.decorator'
 import {
 	ApiCreateServiceResponses,
+	ApiDeleteServiceResponses,
 	ApiFindAllResponses,
 	ApiFindFeaturedResponses,
 	ApiFindOneResponses,
@@ -76,5 +78,14 @@ export class ServiceController {
 		@CurrentWorker() worker,
 	) {
 		return this.serviceService.update(dto, id, worker.supabaseId)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Delete('services/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Delete a service by id' })
+	@ApiDeleteServiceResponses()
+	async delete(@Param('id') id: string, @CurrentWorker() worker) {
+		return this.serviceService.delete(id, worker.supabaseId)
 	}
 }

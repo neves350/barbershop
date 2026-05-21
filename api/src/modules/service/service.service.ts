@@ -73,4 +73,31 @@ export class ServiceService {
 
 		return updatedService
 	}
+
+	async delete(serviceId: string, supabaseId: string) {
+		const worker = await this.prisma.worker.findUniqueOrThrow({
+			where: { supabaseId },
+		})
+
+		const service = await this.prisma.service.findFirst({
+			where: {
+				id: serviceId,
+				workerId: worker.id,
+			},
+		})
+
+		if (!service) throw new NotFoundException('Service not found')
+
+		await this.prisma.service.delete({
+			where: {
+				id: serviceId,
+				workerId: worker.id,
+			},
+		})
+
+		return {
+			message: 'Service deleted successfully',
+			success: true,
+		}
+	}
 }
