@@ -1,10 +1,10 @@
-import { Prisma, ServiceCategory } from 'src/generated/prisma/client'
+import { ServiceCategory } from 'src/generated/prisma/client'
 
 export const Services = [
 	{
 		name: 'Brushing Head Spa',
 		description: 'Tratamento relaxante de head spa com brushing final.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: true,
@@ -12,7 +12,7 @@ export const Services = [
 	{
 		name: 'CH/Mass+Brushing',
 		description: 'Chuveiro de massa com brushing incluído.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -20,7 +20,7 @@ export const Services = [
 	{
 		name: 'CH/Mass+Cor Global S Amon',
 		description: 'Chuveiro de massa com coloração global sem amoníaco.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 120,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -28,7 +28,7 @@ export const Services = [
 	{
 		name: 'CH/Mass+Cor Raiz (S Amon)',
 		description: 'Chuveiro de massa com coloração de raiz sem amoníaco.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -36,7 +36,7 @@ export const Services = [
 	{
 		name: 'CH/Mass+Corte+Brushing',
 		description: 'Chuveiro de massa com corte e brushing.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 120,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -44,7 +44,7 @@ export const Services = [
 	{
 		name: 'CH/Mass+Corte+Finish (Homem)',
 		description: 'Chuveiro de massa com corte e acabamento masculino.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -52,7 +52,7 @@ export const Services = [
 	{
 		name: 'Contrastes + Matização',
 		description: 'Serviço de contrastes com matização final.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 150,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -60,7 +60,7 @@ export const Services = [
 	{
 		name: 'Cor 2 em 1 S Amon',
 		description: 'Coloração 2 em 1 sem amoníaco.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -68,7 +68,7 @@ export const Services = [
 	{
 		name: 'Head Spa S/ Brushing',
 		description: 'Tratamento de head spa sem brushing final.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -76,7 +76,7 @@ export const Services = [
 	{
 		name: 'Método Multivitamínico',
 		description: 'Tratamento capilar com método multivitamínico.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -85,7 +85,7 @@ export const Services = [
 		name: 'Método Normalizante',
 		description:
 			'Tratamento capilar normalizante para reequilíbrio do couro cabeludo.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -93,7 +93,7 @@ export const Services = [
 	{
 		name: 'Método Regenerante',
 		description: 'Tratamento capilar regenerante para cabelos danificados.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -101,7 +101,7 @@ export const Services = [
 	{
 		name: 'Método Revitalizante',
 		description: 'Tratamento capilar revitalizante para cabelos sem brilho.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -109,7 +109,7 @@ export const Services = [
 	{
 		name: 'Método Sensitive',
 		description: 'Tratamento capilar específico para couro cabeludo sensível.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -117,7 +117,7 @@ export const Services = [
 	{
 		name: 'Peeling Capilar',
 		description: 'Peeling de couro cabeludo para remoção de impurezas.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -125,7 +125,7 @@ export const Services = [
 	{
 		name: 'Sunlights + Matização',
 		description: 'Técnica de sunlights com matização final.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 150,
 		category: ServiceCategory.HAIR,
 		featured: false,
@@ -135,7 +135,7 @@ export const Services = [
 	{
 		name: 'Coloração',
 		description: 'Coloração capilar completa com amoníaco.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.COLORING,
 		featured: true,
@@ -143,7 +143,7 @@ export const Services = [
 	{
 		name: 'Tom Sobre Tom',
 		description: 'Coloração tom sobre tom sem amoníaco para maior brilho.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -151,7 +151,7 @@ export const Services = [
 	{
 		name: 'Cor 2 em 1',
 		description: 'Técnica exclusiva JLD de coloração 2 em 1.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -159,7 +159,7 @@ export const Services = [
 	{
 		name: 'Gloss 2 em 1',
 		description: 'Tratamento gloss 2 em 1 para brilho intenso.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -167,7 +167,7 @@ export const Services = [
 	{
 		name: 'Contrastes',
 		description: 'Técnica de contrastes para realçar o volume e luminosidade.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 150,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -175,7 +175,7 @@ export const Services = [
 	{
 		name: 'Contouring Contrastes',
 		description: 'Técnica de contouring com contrastes para modelar o rosto.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 150,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -183,7 +183,7 @@ export const Services = [
 	{
 		name: 'Contrastes Overlight 2 Tons',
 		description: 'Contrastes overlight em dois tons para efeito luminoso.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 180,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -191,7 +191,7 @@ export const Services = [
 	{
 		name: 'Magic Light',
 		description: 'Técnica exclusiva JLD Magic Light para iluminação natural.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 180,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -199,7 +199,7 @@ export const Services = [
 	{
 		name: 'Gloss 100%',
 		description: 'Tratamento gloss 100% para brilho e selagem da cor.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 45,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -207,7 +207,7 @@ export const Services = [
 	{
 		name: 'Root Shadow',
 		description: 'Técnica de root shadow para efeito de raiz sombreada.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -215,7 +215,7 @@ export const Services = [
 	{
 		name: 'Arcticlight French Balayage',
 		description: 'Técnica exclusiva Arcticlight com French Balayage.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 180,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -223,7 +223,7 @@ export const Services = [
 	{
 		name: 'Sunlights',
 		description: 'Técnica de sunlights para reflexos naturais e luminosos.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 150,
 		category: ServiceCategory.COLORING,
 		featured: false,
@@ -234,7 +234,7 @@ export const Services = [
 		name: 'JLD Kera Molecular Bonder',
 		description:
 			'Tratamento de queratina molecular bonder para reconstrução profunda.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 90,
 		category: ServiceCategory.TREATMENTS,
 		featured: true,
@@ -243,7 +243,7 @@ export const Services = [
 		name: 'JLD Gokera Green',
 		description:
 			'Tratamento Gokera Green com fórmula natural para hidratação intensa.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -252,7 +252,7 @@ export const Services = [
 		name: 'JLD Gokera Repair',
 		description:
 			'Tratamento Gokera Repair para reparação de cabelos danificados.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -261,7 +261,7 @@ export const Services = [
 		name: 'JLD Gokera XXL',
 		description:
 			'Tratamento Gokera XXL para cabelos com necessidade de nutrição extrema.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 75,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -270,7 +270,7 @@ export const Services = [
 		name: 'JLD Gokera Color',
 		description:
 			'Tratamento Gokera Color para proteção e prolongamento de colorações.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -279,7 +279,7 @@ export const Services = [
 		name: 'JLD Gokera Liss',
 		description:
 			'Tratamento Gokera Liss para alisamento e disciplina dos fios.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 75,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -288,7 +288,7 @@ export const Services = [
 		name: 'JLD Gokera Blondie',
 		description:
 			'Tratamento Gokera Blondie especial para cabelos loiros e descolorados.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.TREATMENTS,
 		featured: false,
@@ -298,7 +298,7 @@ export const Services = [
 	{
 		name: 'Depil. 1/2 Perna',
 		description: 'Depilação de meia perna.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 30,
 		category: ServiceCategory.AESTHETICS,
 		featured: true,
@@ -306,7 +306,7 @@ export const Services = [
 	{
 		name: 'Depil. Axilas',
 		description: 'Depilação de axilas.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 20,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -314,7 +314,7 @@ export const Services = [
 	{
 		name: 'Depil. Buço',
 		description: 'Depilação de buço.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 15,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -322,7 +322,7 @@ export const Services = [
 	{
 		name: 'Depil. Perna Inteira',
 		description: 'Depilação de perna inteira.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 45,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -330,7 +330,7 @@ export const Services = [
 	{
 		name: 'Depil. Sobrancelhas',
 		description: 'Depilação e design de sobrancelhas.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 20,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -338,7 +338,7 @@ export const Services = [
 	{
 		name: 'Depil. Virilha Simples',
 		description: 'Depilação de virilha simples.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 20,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -346,7 +346,7 @@ export const Services = [
 	{
 		name: 'Depil. Virilhas Brasileiras',
 		description: 'Depilação de virilhas brasileiras completa.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 30,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -354,7 +354,7 @@ export const Services = [
 	{
 		name: 'Manicure',
 		description: 'Serviço de manicure completo.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 45,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -362,7 +362,7 @@ export const Services = [
 	{
 		name: 'Manicure+Gelinho',
 		description: 'Manicure com aplicação de gelinho.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -370,7 +370,7 @@ export const Services = [
 	{
 		name: 'Pedicure',
 		description: 'Serviço de pedicure completo.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 60,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,
@@ -378,7 +378,7 @@ export const Services = [
 	{
 		name: 'Pedicure+Gelinho',
 		description: 'Pedicure com aplicação de gelinho.',
-		price: new Prisma.Decimal(0.0),
+		price: 0,
 		duration: 75,
 		category: ServiceCategory.AESTHETICS,
 		featured: false,

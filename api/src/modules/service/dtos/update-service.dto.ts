@@ -1,7 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 import {
 	IsBoolean,
-	IsDecimal,
 	IsEnum,
 	IsInt,
 	IsNotEmpty,
@@ -22,8 +21,8 @@ export class UpdateServiceDto {
 	@ApiProperty()
 	description?: string
 
-	@IsDecimal()
-	@Min(1)
+	@IsInt()
+	@Min(0)
 	@IsNotEmpty()
 	@ApiProperty()
 	price?: number
