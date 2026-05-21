@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { CurrentWorker } from 'src/common/decorators/current-worker.decorator'
 import {
+	ApiCreateServiceResponses,
 	ApiFindAllResponses,
 	ApiFindFeaturedResponses,
 } from 'src/common/decorators/service.decorator'
@@ -19,6 +20,7 @@ export class ServiceController {
 	@Post('services')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Creates a new service' })
+	@ApiCreateServiceResponses()
 	async create(@Body() dto: CreateServiceDto, @CurrentWorker() worker) {
 		const service = await this.serviceService.create(dto, worker.supabaseId)
 

@@ -1,6 +1,39 @@
 import { applyDecorators } from '@nestjs/common'
 import { ApiResponse } from '@nestjs/swagger'
 
+export function ApiCreateServiceResponses() {
+	return applyDecorators(
+		ApiResponse({
+			status: 201,
+			description: 'Service created successfully',
+			schema: {
+				example: {
+					service: {
+						id: '46cf0946-4bd2-4154-a214-b5935b319428',
+						name: 'Corte de cabelo',
+						description: 'Corte personalizado para o teu tipo de cabelo e estilo de vida.',
+						price: '35.00',
+						duration: 45,
+						category: 'HAIR',
+						active: true,
+						featured: false,
+						createdAt: '2026-05-20T15:37:55.038Z',
+					},
+					message: 'Service created successfull',
+				},
+			},
+		}),
+		ApiResponse({
+			status: 400,
+			description: 'Validation error — invalid or missing fields.',
+		}),
+		ApiResponse({
+			status: 401,
+			description: 'Unauthorized — invalid or missing bearer token.',
+		}),
+	)
+}
+
 export function ApiFindAllResponses() {
 	return applyDecorators(
 		ApiResponse({
