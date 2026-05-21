@@ -744,6 +744,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const WorkerScalarFieldEnum = {
   id: 'id',
+  supabaseId: 'supabaseId',
   name: 'name',
   initials: 'initials',
   avatarUrl: 'avatarUrl',

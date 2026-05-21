@@ -9,14 +9,15 @@ datasource db {
 }
 
 model Worker {
-  id        String    @id @default(uuid())
-  name      String
-  initials  String
-  avatarUrl String?   @map("avatar_url")
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now()) @map("created_at")
-  services  Service[]
-  bookings  Booking[]
+  id         String    @id @default(uuid())
+  supabaseId String    @unique @map("supabase_id")
+  name       String
+  initials   String
+  avatarUrl  String?   @map("avatar_url")
+  active     Boolean   @default(true)
+  createdAt  DateTime  @default(now()) @map("created_at")
+  services   Service[]
+  bookings   Booking[]
 
   @@map("workers")
 }

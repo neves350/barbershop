@@ -26,6 +26,7 @@ export type AggregateWorker = {
 
 export type WorkerMinAggregateOutputType = {
   id: string | null
+  supabaseId: string | null
   name: string | null
   initials: string | null
   avatarUrl: string | null
@@ -35,6 +36,7 @@ export type WorkerMinAggregateOutputType = {
 
 export type WorkerMaxAggregateOutputType = {
   id: string | null
+  supabaseId: string | null
   name: string | null
   initials: string | null
   avatarUrl: string | null
@@ -44,6 +46,7 @@ export type WorkerMaxAggregateOutputType = {
 
 export type WorkerCountAggregateOutputType = {
   id: number
+  supabaseId: number
   name: number
   initials: number
   avatarUrl: number
@@ -55,6 +58,7 @@ export type WorkerCountAggregateOutputType = {
 
 export type WorkerMinAggregateInputType = {
   id?: true
+  supabaseId?: true
   name?: true
   initials?: true
   avatarUrl?: true
@@ -64,6 +68,7 @@ export type WorkerMinAggregateInputType = {
 
 export type WorkerMaxAggregateInputType = {
   id?: true
+  supabaseId?: true
   name?: true
   initials?: true
   avatarUrl?: true
@@ -73,6 +78,7 @@ export type WorkerMaxAggregateInputType = {
 
 export type WorkerCountAggregateInputType = {
   id?: true
+  supabaseId?: true
   name?: true
   initials?: true
   avatarUrl?: true
@@ -155,6 +161,7 @@ export type WorkerGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type WorkerGroupByOutputType = {
   id: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl: string | null
@@ -185,6 +192,7 @@ export type WorkerWhereInput = {
   OR?: Prisma.WorkerWhereInput[]
   NOT?: Prisma.WorkerWhereInput | Prisma.WorkerWhereInput[]
   id?: Prisma.StringFilter<"Worker"> | string
+  supabaseId?: Prisma.StringFilter<"Worker"> | string
   name?: Prisma.StringFilter<"Worker"> | string
   initials?: Prisma.StringFilter<"Worker"> | string
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
@@ -196,6 +204,7 @@ export type WorkerWhereInput = {
 
 export type WorkerOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   initials?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -207,6 +216,7 @@ export type WorkerOrderByWithRelationInput = {
 
 export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  supabaseId?: string
   AND?: Prisma.WorkerWhereInput | Prisma.WorkerWhereInput[]
   OR?: Prisma.WorkerWhereInput[]
   NOT?: Prisma.WorkerWhereInput | Prisma.WorkerWhereInput[]
@@ -217,10 +227,11 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   services?: Prisma.ServiceListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
-}, "id">
+}, "id" | "supabaseId">
 
 export type WorkerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   initials?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -236,6 +247,7 @@ export type WorkerScalarWhereWithAggregatesInput = {
   OR?: Prisma.WorkerScalarWhereWithAggregatesInput[]
   NOT?: Prisma.WorkerScalarWhereWithAggregatesInput | Prisma.WorkerScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Worker"> | string
+  supabaseId?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   name?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   initials?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Worker"> | string | null
@@ -245,6 +257,7 @@ export type WorkerScalarWhereWithAggregatesInput = {
 
 export type WorkerCreateInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -256,6 +269,7 @@ export type WorkerCreateInput = {
 
 export type WorkerUncheckedCreateInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -267,6 +281,7 @@ export type WorkerUncheckedCreateInput = {
 
 export type WorkerUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -278,6 +293,7 @@ export type WorkerUpdateInput = {
 
 export type WorkerUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -289,6 +305,7 @@ export type WorkerUncheckedUpdateInput = {
 
 export type WorkerCreateManyInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -298,6 +315,7 @@ export type WorkerCreateManyInput = {
 
 export type WorkerUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -307,6 +325,7 @@ export type WorkerUpdateManyMutationInput = {
 
 export type WorkerUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -316,6 +335,7 @@ export type WorkerUncheckedUpdateManyInput = {
 
 export type WorkerCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   initials?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
@@ -325,6 +345,7 @@ export type WorkerCountOrderByAggregateInput = {
 
 export type WorkerMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   initials?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
@@ -334,6 +355,7 @@ export type WorkerMaxOrderByAggregateInput = {
 
 export type WorkerMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   initials?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
@@ -396,6 +418,7 @@ export type WorkerUpdateOneWithoutBookingsNestedInput = {
 
 export type WorkerCreateWithoutServicesInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -406,6 +429,7 @@ export type WorkerCreateWithoutServicesInput = {
 
 export type WorkerUncheckedCreateWithoutServicesInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -432,6 +456,7 @@ export type WorkerUpdateToOneWithWhereWithoutServicesInput = {
 
 export type WorkerUpdateWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -442,6 +467,7 @@ export type WorkerUpdateWithoutServicesInput = {
 
 export type WorkerUncheckedUpdateWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -452,6 +478,7 @@ export type WorkerUncheckedUpdateWithoutServicesInput = {
 
 export type WorkerCreateWithoutBookingsInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -462,6 +489,7 @@ export type WorkerCreateWithoutBookingsInput = {
 
 export type WorkerUncheckedCreateWithoutBookingsInput = {
   id?: string
+  supabaseId: string
   name: string
   initials: string
   avatarUrl?: string | null
@@ -488,6 +516,7 @@ export type WorkerUpdateToOneWithWhereWithoutBookingsInput = {
 
 export type WorkerUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -498,6 +527,7 @@ export type WorkerUpdateWithoutBookingsInput = {
 
 export type WorkerUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -548,6 +578,7 @@ export type WorkerCountOutputTypeCountBookingsArgs<ExtArgs extends runtime.Types
 
 export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  supabaseId?: boolean
   name?: boolean
   initials?: boolean
   avatarUrl?: boolean
@@ -560,6 +591,7 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  supabaseId?: boolean
   name?: boolean
   initials?: boolean
   avatarUrl?: boolean
@@ -569,6 +601,7 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  supabaseId?: boolean
   name?: boolean
   initials?: boolean
   avatarUrl?: boolean
@@ -578,6 +611,7 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type WorkerSelectScalar = {
   id?: boolean
+  supabaseId?: boolean
   name?: boolean
   initials?: boolean
   avatarUrl?: boolean
@@ -585,7 +619,7 @@ export type WorkerSelectScalar = {
   createdAt?: boolean
 }
 
-export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "initials" | "avatarUrl" | "active" | "createdAt", ExtArgs["result"]["worker"]>
+export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseId" | "name" | "initials" | "avatarUrl" | "active" | "createdAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
@@ -602,6 +636,7 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    supabaseId: string
     name: string
     initials: string
     avatarUrl: string | null
@@ -1033,6 +1068,7 @@ export interface Prisma__WorkerClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface WorkerFieldRefs {
   readonly id: Prisma.FieldRef<"Worker", 'String'>
+  readonly supabaseId: Prisma.FieldRef<"Worker", 'String'>
   readonly name: Prisma.FieldRef<"Worker", 'String'>
   readonly initials: Prisma.FieldRef<"Worker", 'String'>
   readonly avatarUrl: Prisma.FieldRef<"Worker", 'String'>
