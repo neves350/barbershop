@@ -13,6 +13,7 @@ async function bootstrap() {
 			'API for barbershop public website and a private dashboard.',
 		)
 		.setVersion('1.0.0')
+		.addBearerAuth()
 		.build()
 	const documentFactory = () => SwaggerModule.createDocument(app, config)
 	SwaggerModule.setup('api', app, documentFactory, {
