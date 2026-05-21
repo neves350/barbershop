@@ -15,6 +15,7 @@ model Worker {
   avatarUrl String?   @map("avatar_url")
   active    Boolean   @default(true)
   createdAt DateTime  @default(now()) @map("created_at")
+  services  Service[]
   bookings  Booking[]
 
   @@map("workers")
@@ -29,6 +30,8 @@ model Service {
   category    ServiceCategory
   active      Boolean          @default(true)
   featured    Boolean          @default(false)
+  workerId    String?          @map("worker_id")
+  worker      Worker?          @relation(fields: [workerId], references: [id])
   createdAt   DateTime         @default(now()) @map("created_at")
   bookings    BookingService[]
 

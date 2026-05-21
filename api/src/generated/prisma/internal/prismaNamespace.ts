@@ -763,6 +763,7 @@ export const ServiceScalarFieldEnum = {
   category: 'category',
   active: 'active',
   featured: 'featured',
+  workerId: 'workerId',
   createdAt: 'createdAt'
 } as const
 

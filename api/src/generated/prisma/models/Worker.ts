@@ -190,6 +190,7 @@ export type WorkerWhereInput = {
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
+  services?: Prisma.ServiceListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
 }
 
@@ -200,6 +201,7 @@ export type WorkerOrderByWithRelationInput = {
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  services?: Prisma.ServiceOrderByRelationAggregateInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
 }
 
@@ -213,6 +215,7 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
+  services?: Prisma.ServiceListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
 }, "id">
 
@@ -247,6 +250,7 @@ export type WorkerCreateInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  services?: Prisma.ServiceCreateNestedManyWithoutWorkerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
 }
 
@@ -257,6 +261,7 @@ export type WorkerUncheckedCreateInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutWorkerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
 }
 
@@ -267,6 +272,7 @@ export type WorkerUpdateInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUpdateManyWithoutWorkerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
 }
 
@@ -277,6 +283,7 @@ export type WorkerUncheckedUpdateInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutWorkerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
@@ -355,6 +362,22 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type WorkerCreateNestedOneWithoutServicesInput = {
+  create?: Prisma.XOR<Prisma.WorkerCreateWithoutServicesInput, Prisma.WorkerUncheckedCreateWithoutServicesInput>
+  connectOrCreate?: Prisma.WorkerCreateOrConnectWithoutServicesInput
+  connect?: Prisma.WorkerWhereUniqueInput
+}
+
+export type WorkerUpdateOneWithoutServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkerCreateWithoutServicesInput, Prisma.WorkerUncheckedCreateWithoutServicesInput>
+  connectOrCreate?: Prisma.WorkerCreateOrConnectWithoutServicesInput
+  upsert?: Prisma.WorkerUpsertWithoutServicesInput
+  disconnect?: Prisma.WorkerWhereInput | boolean
+  delete?: Prisma.WorkerWhereInput | boolean
+  connect?: Prisma.WorkerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkerUpdateToOneWithWhereWithoutServicesInput, Prisma.WorkerUpdateWithoutServicesInput>, Prisma.WorkerUncheckedUpdateWithoutServicesInput>
+}
+
 export type WorkerCreateNestedOneWithoutBookingsInput = {
   create?: Prisma.XOR<Prisma.WorkerCreateWithoutBookingsInput, Prisma.WorkerUncheckedCreateWithoutBookingsInput>
   connectOrCreate?: Prisma.WorkerCreateOrConnectWithoutBookingsInput
@@ -371,6 +394,62 @@ export type WorkerUpdateOneWithoutBookingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkerUpdateToOneWithWhereWithoutBookingsInput, Prisma.WorkerUpdateWithoutBookingsInput>, Prisma.WorkerUncheckedUpdateWithoutBookingsInput>
 }
 
+export type WorkerCreateWithoutServicesInput = {
+  id?: string
+  name: string
+  initials: string
+  avatarUrl?: string | null
+  active?: boolean
+  createdAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
+}
+
+export type WorkerUncheckedCreateWithoutServicesInput = {
+  id?: string
+  name: string
+  initials: string
+  avatarUrl?: string | null
+  active?: boolean
+  createdAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
+}
+
+export type WorkerCreateOrConnectWithoutServicesInput = {
+  where: Prisma.WorkerWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkerCreateWithoutServicesInput, Prisma.WorkerUncheckedCreateWithoutServicesInput>
+}
+
+export type WorkerUpsertWithoutServicesInput = {
+  update: Prisma.XOR<Prisma.WorkerUpdateWithoutServicesInput, Prisma.WorkerUncheckedUpdateWithoutServicesInput>
+  create: Prisma.XOR<Prisma.WorkerCreateWithoutServicesInput, Prisma.WorkerUncheckedCreateWithoutServicesInput>
+  where?: Prisma.WorkerWhereInput
+}
+
+export type WorkerUpdateToOneWithWhereWithoutServicesInput = {
+  where?: Prisma.WorkerWhereInput
+  data: Prisma.XOR<Prisma.WorkerUpdateWithoutServicesInput, Prisma.WorkerUncheckedUpdateWithoutServicesInput>
+}
+
+export type WorkerUpdateWithoutServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
+}
+
+export type WorkerUncheckedUpdateWithoutServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
+}
+
 export type WorkerCreateWithoutBookingsInput = {
   id?: string
   name: string
@@ -378,6 +457,7 @@ export type WorkerCreateWithoutBookingsInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  services?: Prisma.ServiceCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUncheckedCreateWithoutBookingsInput = {
@@ -387,6 +467,7 @@ export type WorkerUncheckedCreateWithoutBookingsInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerCreateOrConnectWithoutBookingsInput = {
@@ -412,6 +493,7 @@ export type WorkerUpdateWithoutBookingsInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerUncheckedUpdateWithoutBookingsInput = {
@@ -421,6 +503,7 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
 
@@ -429,10 +512,12 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
  */
 
 export type WorkerCountOutputType = {
+  services: number
   bookings: number
 }
 
 export type WorkerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  services?: boolean | WorkerCountOutputTypeCountServicesArgs
   bookings?: boolean | WorkerCountOutputTypeCountBookingsArgs
 }
 
@@ -444,6 +529,13 @@ export type WorkerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
    * Select specific fields to fetch from the WorkerCountOutputType
    */
   select?: Prisma.WorkerCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * WorkerCountOutputType without action
+ */
+export type WorkerCountOutputTypeCountServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ServiceWhereInput
 }
 
 /**
@@ -461,6 +553,7 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
+  services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["worker"]>
@@ -494,6 +587,7 @@ export type WorkerSelectScalar = {
 
 export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "initials" | "avatarUrl" | "active" | "createdAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -503,6 +597,7 @@ export type WorkerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Worker"
   objects: {
+    services: Prisma.$ServicePayload<ExtArgs>[]
     bookings: Prisma.$BookingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -906,6 +1001,7 @@ readonly fields: WorkerFieldRefs;
  */
 export interface Prisma__WorkerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  services<T extends Prisma.Worker$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookings<T extends Prisma.Worker$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1332,6 +1428,30 @@ export type WorkerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Workers to delete.
    */
   limit?: number
+}
+
+/**
+ * Worker.services
+ */
+export type Worker$servicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Service
+   */
+  select?: Prisma.ServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Service
+   */
+  omit?: Prisma.ServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ServiceInclude<ExtArgs> | null
+  where?: Prisma.ServiceWhereInput
+  orderBy?: Prisma.ServiceOrderByWithRelationInput | Prisma.ServiceOrderByWithRelationInput[]
+  cursor?: Prisma.ServiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ServiceScalarFieldEnum | Prisma.ServiceScalarFieldEnum[]
 }
 
 /**
