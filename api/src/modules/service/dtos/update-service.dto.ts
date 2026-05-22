@@ -13,28 +13,30 @@ import { ServiceCategory } from 'src/generated/prisma/enums'
 export class UpdateServiceDto {
 	@IsString()
 	@IsNotEmpty()
+	@IsOptional()
 	@ApiProperty()
 	name?: string
 
 	@IsString()
 	@IsNotEmpty()
+	@IsOptional()
 	@ApiProperty()
 	description?: string
 
 	@IsInt()
 	@Min(0)
-	@IsNotEmpty()
+	@IsOptional()
 	@ApiProperty()
 	price?: number
 
 	@IsInt()
 	@Min(1)
-	@IsNotEmpty()
+	@IsOptional()
 	@ApiProperty()
 	duration?: number
 
 	@IsEnum(ServiceCategory)
-	@IsNotEmpty()
+	@IsOptional()
 	@ApiProperty({ enum: ServiceCategory })
 	category?: ServiceCategory
 
