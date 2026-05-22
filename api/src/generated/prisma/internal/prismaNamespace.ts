@@ -746,7 +746,7 @@ export const WorkerScalarFieldEnum = {
   id: 'id',
   supabaseId: 'supabaseId',
   name: 'name',
-  initials: 'initials',
+  specialty: 'specialty',
   avatarUrl: 'avatarUrl',
   active: 'active',
   createdAt: 'createdAt',
@@ -839,6 +839,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'WorkerSpecialty'
+ */
+export type EnumWorkerSpecialtyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WorkerSpecialty'>
+    
+
+
+/**
+ * Reference to a field of type 'WorkerSpecialty[]'
+ */
+export type ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WorkerSpecialty[]'>
     
 
 

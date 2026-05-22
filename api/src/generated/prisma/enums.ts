@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const WorkerSpecialty = {
+  BEAUTICIAN: 'BEAUTICIAN',
+  ESTHETICS: 'ESTHETICS'
+} as const
+
+export type WorkerSpecialty = (typeof WorkerSpecialty)[keyof typeof WorkerSpecialty]
+
+
 export const ServiceCategory = {
   HAIR: 'HAIR',
   COLORING: 'COLORING',

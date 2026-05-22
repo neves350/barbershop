@@ -29,6 +29,13 @@ export type StringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
+export type EnumWorkerSpecialtyFilter<$PrismaModel = never> = {
+  equals?: $Enums.WorkerSpecialty | Prisma.EnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  in?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel> | $Enums.WorkerSpecialty
+}
+
 export type StringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -81,6 +88,16 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedStringFilter<$PrismaModel>
   _max?: Prisma.NestedStringFilter<$PrismaModel>
+}
+
+export type EnumWorkerSpecialtyWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WorkerSpecialty | Prisma.EnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  in?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWorkerSpecialtyWithAggregatesFilter<$PrismaModel> | $Enums.WorkerSpecialty
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel>
 }
 
 export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -198,6 +215,13 @@ export type NestedStringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
+export type NestedEnumWorkerSpecialtyFilter<$PrismaModel = never> = {
+  equals?: $Enums.WorkerSpecialty | Prisma.EnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  in?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel> | $Enums.WorkerSpecialty
+}
+
 export type NestedStringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -254,6 +278,16 @@ export type NestedIntFilter<$PrismaModel = never> = {
   gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
   gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
   not?: Prisma.NestedIntFilter<$PrismaModel> | number
+}
+
+export type NestedEnumWorkerSpecialtyWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WorkerSpecialty | Prisma.EnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  in?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WorkerSpecialty[] | Prisma.ListEnumWorkerSpecialtyFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWorkerSpecialtyWithAggregatesFilter<$PrismaModel> | $Enums.WorkerSpecialty
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWorkerSpecialtyFilter<$PrismaModel>
 }
 
 export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {

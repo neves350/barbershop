@@ -28,7 +28,7 @@ export type WorkerMinAggregateOutputType = {
   id: string | null
   supabaseId: string | null
   name: string | null
-  initials: string | null
+  specialty: $Enums.WorkerSpecialty | null
   avatarUrl: string | null
   active: boolean | null
   createdAt: Date | null
@@ -39,7 +39,7 @@ export type WorkerMaxAggregateOutputType = {
   id: string | null
   supabaseId: string | null
   name: string | null
-  initials: string | null
+  specialty: $Enums.WorkerSpecialty | null
   avatarUrl: string | null
   active: boolean | null
   createdAt: Date | null
@@ -50,7 +50,7 @@ export type WorkerCountAggregateOutputType = {
   id: number
   supabaseId: number
   name: number
-  initials: number
+  specialty: number
   avatarUrl: number
   active: number
   createdAt: number
@@ -63,7 +63,7 @@ export type WorkerMinAggregateInputType = {
   id?: true
   supabaseId?: true
   name?: true
-  initials?: true
+  specialty?: true
   avatarUrl?: true
   active?: true
   createdAt?: true
@@ -74,7 +74,7 @@ export type WorkerMaxAggregateInputType = {
   id?: true
   supabaseId?: true
   name?: true
-  initials?: true
+  specialty?: true
   avatarUrl?: true
   active?: true
   createdAt?: true
@@ -85,7 +85,7 @@ export type WorkerCountAggregateInputType = {
   id?: true
   supabaseId?: true
   name?: true
-  initials?: true
+  specialty?: true
   avatarUrl?: true
   active?: true
   createdAt?: true
@@ -169,7 +169,7 @@ export type WorkerGroupByOutputType = {
   id: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl: string | null
   active: boolean
   createdAt: Date
@@ -201,7 +201,7 @@ export type WorkerWhereInput = {
   id?: Prisma.StringFilter<"Worker"> | string
   supabaseId?: Prisma.StringFilter<"Worker"> | string
   name?: Prisma.StringFilter<"Worker"> | string
-  initials?: Prisma.StringFilter<"Worker"> | string
+  specialty?: Prisma.EnumWorkerSpecialtyFilter<"Worker"> | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
@@ -214,7 +214,7 @@ export type WorkerOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  initials?: Prisma.SortOrder
+  specialty?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -230,7 +230,7 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.WorkerWhereInput[]
   NOT?: Prisma.WorkerWhereInput | Prisma.WorkerWhereInput[]
   name?: Prisma.StringFilter<"Worker"> | string
-  initials?: Prisma.StringFilter<"Worker"> | string
+  specialty?: Prisma.EnumWorkerSpecialtyFilter<"Worker"> | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
@@ -243,7 +243,7 @@ export type WorkerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  initials?: Prisma.SortOrder
+  specialty?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -260,7 +260,7 @@ export type WorkerScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   supabaseId?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   name?: Prisma.StringWithAggregatesFilter<"Worker"> | string
-  initials?: Prisma.StringWithAggregatesFilter<"Worker"> | string
+  specialty?: Prisma.EnumWorkerSpecialtyWithAggregatesFilter<"Worker"> | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Worker"> | string | null
   active?: Prisma.BoolWithAggregatesFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
@@ -271,7 +271,7 @@ export type WorkerCreateInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -284,7 +284,7 @@ export type WorkerUncheckedCreateInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -297,7 +297,7 @@ export type WorkerUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -310,7 +310,7 @@ export type WorkerUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -323,7 +323,7 @@ export type WorkerCreateManyInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -334,7 +334,7 @@ export type WorkerUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -345,7 +345,7 @@ export type WorkerUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -356,7 +356,7 @@ export type WorkerCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  initials?: Prisma.SortOrder
+  specialty?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -367,7 +367,7 @@ export type WorkerMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  initials?: Prisma.SortOrder
+  specialty?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -378,7 +378,7 @@ export type WorkerMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   supabaseId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  initials?: Prisma.SortOrder
+  specialty?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -392,6 +392,10 @@ export type WorkerNullableScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type EnumWorkerSpecialtyFieldUpdateOperationsInput = {
+  set?: $Enums.WorkerSpecialty
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -442,7 +446,7 @@ export type WorkerCreateWithoutServicesInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -454,7 +458,7 @@ export type WorkerUncheckedCreateWithoutServicesInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -482,7 +486,7 @@ export type WorkerUpdateWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -494,7 +498,7 @@ export type WorkerUncheckedUpdateWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -506,7 +510,7 @@ export type WorkerCreateWithoutBookingsInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -518,7 +522,7 @@ export type WorkerUncheckedCreateWithoutBookingsInput = {
   id?: string
   supabaseId: string
   name: string
-  initials: string
+  specialty: $Enums.WorkerSpecialty
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
@@ -546,7 +550,7 @@ export type WorkerUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -558,7 +562,7 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   supabaseId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  initials?: Prisma.StringFieldUpdateOperationsInput | string
+  specialty?: Prisma.EnumWorkerSpecialtyFieldUpdateOperationsInput | $Enums.WorkerSpecialty
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -610,7 +614,7 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   supabaseId?: boolean
   name?: boolean
-  initials?: boolean
+  specialty?: boolean
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
@@ -624,7 +628,7 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   supabaseId?: boolean
   name?: boolean
-  initials?: boolean
+  specialty?: boolean
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
@@ -635,7 +639,7 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   supabaseId?: boolean
   name?: boolean
-  initials?: boolean
+  specialty?: boolean
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
@@ -646,14 +650,14 @@ export type WorkerSelectScalar = {
   id?: boolean
   supabaseId?: boolean
   name?: boolean
-  initials?: boolean
+  specialty?: boolean
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseId" | "name" | "initials" | "avatarUrl" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
+export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseId" | "name" | "specialty" | "avatarUrl" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
@@ -672,7 +676,7 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     id: string
     supabaseId: string
     name: string
-    initials: string
+    specialty: $Enums.WorkerSpecialty
     avatarUrl: string | null
     active: boolean
     createdAt: Date
@@ -1105,7 +1109,7 @@ export interface WorkerFieldRefs {
   readonly id: Prisma.FieldRef<"Worker", 'String'>
   readonly supabaseId: Prisma.FieldRef<"Worker", 'String'>
   readonly name: Prisma.FieldRef<"Worker", 'String'>
-  readonly initials: Prisma.FieldRef<"Worker", 'String'>
+  readonly specialty: Prisma.FieldRef<"Worker", 'WorkerSpecialty'>
   readonly avatarUrl: Prisma.FieldRef<"Worker", 'String'>
   readonly active: Prisma.FieldRef<"Worker", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Worker", 'DateTime'>

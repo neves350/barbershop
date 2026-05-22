@@ -77,7 +77,7 @@ export const WorkerScalarFieldEnum = {
   id: 'id',
   supabaseId: 'supabaseId',
   name: 'name',
-  initials: 'initials',
+  specialty: 'specialty',
   avatarUrl: 'avatarUrl',
   active: 'active',
   createdAt: 'createdAt',
