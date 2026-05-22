@@ -9,9 +9,13 @@ export class ServiceService {
 	constructor(private readonly prisma: PrismaService) {}
 
 	async create(dto: CreateServiceDto, supabaseId: string) {
-		const worker = await this.prisma.worker.findUniqueOrThrow({
-			where: { supabaseId },
-		})
+		const worker = await this.prisma.worker
+			.findUniqueOrThrow({
+				where: { supabaseId },
+			})
+			.catch(() => {
+				throw new NotFoundException('Worker not found')
+			})
 
 		return this.prisma.service.create({
 			data: { ...dto, workerId: worker.id },
@@ -34,9 +38,13 @@ export class ServiceService {
 	}
 
 	async findOne(serviceId: string, supabaseId: string) {
-		const worker = await this.prisma.worker.findUniqueOrThrow({
-			where: { supabaseId },
-		})
+		const worker = await this.prisma.worker
+			.findUniqueOrThrow({
+				where: { supabaseId },
+			})
+			.catch(() => {
+				throw new NotFoundException('Worker not found')
+			})
 
 		const service = await this.prisma.service.findFirst({
 			where: {
@@ -51,9 +59,13 @@ export class ServiceService {
 	}
 
 	async update(dto: UpdateServiceDto, serviceId: string, supabaseId: string) {
-		const worker = await this.prisma.worker.findUniqueOrThrow({
-			where: { supabaseId },
-		})
+		const worker = await this.prisma.worker
+			.findUniqueOrThrow({
+				where: { supabaseId },
+			})
+			.catch(() => {
+				throw new NotFoundException('Worker not found')
+			})
 
 		const service = await this.prisma.service.findFirst({
 			where: {
@@ -75,9 +87,13 @@ export class ServiceService {
 	}
 
 	async delete(serviceId: string, supabaseId: string) {
-		const worker = await this.prisma.worker.findUniqueOrThrow({
-			where: { supabaseId },
-		})
+		const worker = await this.prisma.worker
+			.findUniqueOrThrow({
+				where: { supabaseId },
+			})
+			.catch(() => {
+				throw new NotFoundException('Worker not found')
+			})
 
 		const service = await this.prisma.service.findFirst({
 			where: {
