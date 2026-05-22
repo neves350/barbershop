@@ -9,10 +9,10 @@ datasource db {
 }
 
 model Worker {
-  id         String    @id @default(uuid())
-  supabaseId String    @unique @map("supabase_id")
+  id         String          @id @default(uuid())
+  supabaseId String          @unique @map("supabase_id")
   name       String
-  initials   String
+  specialty  WorkerSpecialty
   avatarUrl  String?   @map("avatar_url")
   active     Boolean   @default(true)
   createdAt  DateTime  @default(now()) @map("created_at")
@@ -21,6 +21,11 @@ model Worker {
   bookings   Booking[]
 
   @@map("workers")
+}
+
+enum WorkerSpecialty {
+  BEAUTICIAN
+  ESTHETICS
 }
 
 model Service {
