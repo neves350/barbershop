@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { PassportModule } from '@nestjs/passport'
 import { SupabaseStrategy } from './common/strategies/supabase.strategy'
 import { ServiceModule } from './modules/service/service.module'
+import { WorkerModule } from './modules/worker/worker.module'
 import { PrismaModule } from './prisma/prisma.module'
 
 @Module({
@@ -11,6 +12,7 @@ import { PrismaModule } from './prisma/prisma.module'
 		PassportModule,
 		PrismaModule,
 		ServiceModule,
+		WorkerModule,
 	],
 	controllers: [],
 	providers: [SupabaseStrategy],
