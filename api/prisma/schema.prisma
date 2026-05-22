@@ -16,6 +16,7 @@ model Worker {
   avatarUrl  String?   @map("avatar_url")
   active     Boolean   @default(true)
   createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
   services   Service[]
   bookings   Booking[]
 
@@ -32,8 +33,9 @@ model Service {
   active      Boolean          @default(true)
   featured    Boolean          @default(false)
   workerId    String?          @map("worker_id")
-  worker      Worker?          @relation(fields: [workerId], references: [id])
+  worker      Worker?          @relation(fields: [workerId], references: [id], onDelete: Cascade)
   createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at")
   bookings    BookingService[]
 
   @@map("services")
@@ -56,7 +58,7 @@ model Booking {
   date       DateTime
   status     BookingStatus    @default(PENDING)
   workerId   String?          @map("worker_id")
-  worker     Worker?          @relation(fields: [workerId], references: [id])
+  worker     Worker?          @relation(fields: [workerId], references: [id], onDelete: Cascade)
   services   BookingService[]
   createdAt  DateTime         @default(now()) @map("created_at")
   updatedAt  DateTime         @updatedAt @map("updated_at")
@@ -67,8 +69,8 @@ model Booking {
 model BookingService {
   bookingId String  @map("booking_id")
   serviceId String  @map("service_id")
-  booking   Booking @relation(fields: [bookingId], references: [id])
-  service   Service @relation(fields: [serviceId], references: [id])
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@id([bookingId, serviceId])
   @@map("booking_services")

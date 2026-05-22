@@ -749,7 +749,8 @@ export const WorkerScalarFieldEnum = {
   initials: 'initials',
   avatarUrl: 'avatarUrl',
   active: 'active',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type WorkerScalarFieldEnum = (typeof WorkerScalarFieldEnum)[keyof typeof WorkerScalarFieldEnum]
@@ -765,7 +766,8 @@ export const ServiceScalarFieldEnum = {
   active: 'active',
   featured: 'featured',
   workerId: 'workerId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]

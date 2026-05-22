@@ -32,6 +32,7 @@ export type WorkerMinAggregateOutputType = {
   avatarUrl: string | null
   active: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type WorkerMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type WorkerMaxAggregateOutputType = {
   avatarUrl: string | null
   active: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type WorkerCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type WorkerCountAggregateOutputType = {
   avatarUrl: number
   active: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type WorkerMinAggregateInputType = {
   avatarUrl?: true
   active?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type WorkerMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type WorkerMaxAggregateInputType = {
   avatarUrl?: true
   active?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type WorkerCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type WorkerCountAggregateInputType = {
   avatarUrl?: true
   active?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type WorkerGroupByOutputType = {
   avatarUrl: string | null
   active: boolean
   createdAt: Date
+  updatedAt: Date
   _count: WorkerCountAggregateOutputType | null
   _min: WorkerMinAggregateOutputType | null
   _max: WorkerMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type WorkerWhereInput = {
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   services?: Prisma.ServiceListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
 }
@@ -210,6 +218,7 @@ export type WorkerOrderByWithRelationInput = {
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   services?: Prisma.ServiceOrderByRelationAggregateInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
 }
@@ -225,6 +234,7 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   avatarUrl?: Prisma.StringNullableFilter<"Worker"> | string | null
   active?: Prisma.BoolFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   services?: Prisma.ServiceListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
 }, "id" | "supabaseId">
@@ -237,6 +247,7 @@ export type WorkerOrderByWithAggregationInput = {
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.WorkerCountOrderByAggregateInput
   _max?: Prisma.WorkerMaxOrderByAggregateInput
   _min?: Prisma.WorkerMinOrderByAggregateInput
@@ -253,6 +264,7 @@ export type WorkerScalarWhereWithAggregatesInput = {
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Worker"> | string | null
   active?: Prisma.BoolWithAggregatesFilter<"Worker"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
 }
 
 export type WorkerCreateInput = {
@@ -263,6 +275,7 @@ export type WorkerCreateInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   services?: Prisma.ServiceCreateNestedManyWithoutWorkerInput
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
 }
@@ -275,6 +288,7 @@ export type WorkerUncheckedCreateInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutWorkerInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
 }
@@ -287,6 +301,7 @@ export type WorkerUpdateInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   services?: Prisma.ServiceUpdateManyWithoutWorkerNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
 }
@@ -299,6 +314,7 @@ export type WorkerUncheckedUpdateInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   services?: Prisma.ServiceUncheckedUpdateManyWithoutWorkerNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
 }
@@ -311,6 +327,7 @@ export type WorkerCreateManyInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type WorkerUpdateManyMutationInput = {
@@ -321,6 +338,7 @@ export type WorkerUpdateManyMutationInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type WorkerUncheckedUpdateManyInput = {
@@ -331,6 +349,7 @@ export type WorkerUncheckedUpdateManyInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type WorkerCountOrderByAggregateInput = {
@@ -341,6 +360,7 @@ export type WorkerCountOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type WorkerMaxOrderByAggregateInput = {
@@ -351,6 +371,7 @@ export type WorkerMaxOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type WorkerMinOrderByAggregateInput = {
@@ -361,6 +382,7 @@ export type WorkerMinOrderByAggregateInput = {
   avatarUrl?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type WorkerNullableScalarRelationFilter = {
@@ -424,6 +446,7 @@ export type WorkerCreateWithoutServicesInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
 }
 
@@ -435,6 +458,7 @@ export type WorkerUncheckedCreateWithoutServicesInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
 }
 
@@ -462,6 +486,7 @@ export type WorkerUpdateWithoutServicesInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
 }
 
@@ -473,6 +498,7 @@ export type WorkerUncheckedUpdateWithoutServicesInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
@@ -484,6 +510,7 @@ export type WorkerCreateWithoutBookingsInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   services?: Prisma.ServiceCreateNestedManyWithoutWorkerInput
 }
 
@@ -495,6 +522,7 @@ export type WorkerUncheckedCreateWithoutBookingsInput = {
   avatarUrl?: string | null
   active?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutWorkerInput
 }
 
@@ -522,6 +550,7 @@ export type WorkerUpdateWithoutBookingsInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   services?: Prisma.ServiceUpdateManyWithoutWorkerNestedInput
 }
 
@@ -533,6 +562,7 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   services?: Prisma.ServiceUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
@@ -584,6 +614,7 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
@@ -597,6 +628,7 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["worker"]>
 
 export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -607,6 +639,7 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["worker"]>
 
 export type WorkerSelectScalar = {
@@ -617,9 +650,10 @@ export type WorkerSelectScalar = {
   avatarUrl?: boolean
   active?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseId" | "name" | "initials" | "avatarUrl" | "active" | "createdAt", ExtArgs["result"]["worker"]>
+export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseId" | "name" | "initials" | "avatarUrl" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   services?: boolean | Prisma.Worker$servicesArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
@@ -642,6 +676,7 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     avatarUrl: string | null
     active: boolean
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["worker"]>
   composites: {}
 }
@@ -1074,6 +1109,7 @@ export interface WorkerFieldRefs {
   readonly avatarUrl: Prisma.FieldRef<"Worker", 'String'>
   readonly active: Prisma.FieldRef<"Worker", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Worker", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Worker", 'DateTime'>
 }
     
 
