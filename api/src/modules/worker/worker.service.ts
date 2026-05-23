@@ -81,4 +81,25 @@ export class WorkerService {
 
 		return updatedWorker
 	}
+
+	async delete(workerId: string) {
+		const worker = await this.prisma.worker.findFirst({
+			where: {
+				id: workerId,
+			},
+		})
+
+		if (!worker) throw new NotFoundException('Worker not found')
+
+		await this.prisma.worker.delete({
+			where: {
+				id: workerId,
+			},
+		})
+
+		return {
+			message: 'Worker deleted successfully',
+			success: true,
+		}
+	}
 }

@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	Get,
 	Param,
 	Patch,
@@ -53,5 +54,13 @@ export class WorkerController {
 	@ApiOperation({ summary: 'Update a worker by id' })
 	async update(@Param('id') id: string, @Body() dto: UpdateWorkerDto) {
 		return this.workerService.update(dto, id)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Delete('workers/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Delete a worker by id' })
+	async delete(@Param('id') id: string) {
+		return this.workerService.delete(id)
 	}
 }
