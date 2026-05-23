@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	Param,
+	Patch,
 	Post,
 	Query,
 	UseGuards,
@@ -11,6 +12,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { CreateWorkerDto } from './dtos/create-worker.dto'
 import { QuerySpecialtyDto } from './dtos/query-specialty.dto'
+import { UpdateWorkerDto } from './dtos/update-worker.dto'
 import { WorkerService } from './worker.service'
 
 @ApiTags('Workers')
@@ -43,5 +45,13 @@ export class WorkerController {
 	@ApiOperation({ summary: 'Return a specific worker' })
 	async findOne(@Param('id') id: string) {
 		return this.workerService.findOne(id)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Patch('workers/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Update a worker by id' })
+	async update(@Param('id') id: string, @Body() dto: UpdateWorkerDto) {
+		return this.workerService.update(dto, id)
 	}
 }

@@ -7,6 +7,7 @@ import { SupabaseService } from 'src/common/supabase/supabase.service'
 import { WorkerSpecialty } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateWorkerDto } from './dtos/create-worker.dto'
+import { UpdateWorkerDto } from './dtos/update-worker.dto'
 
 @Injectable()
 export class WorkerService {
@@ -53,5 +54,31 @@ export class WorkerService {
 		if (!worker) throw new NotFoundException('Worker not found')
 
 		return worker
+	}
+
+	async update(dto: UpdateWorkerDto, workerId: string) {
+		const { name, specialty, avatarUrl, active } = dto
+
+		const worker = await this.prisma.worker.findFirst({
+			where: {
+				id: workerId,
+			},
+		})
+
+		if (!worker) throw new NotFoundException('Worker not found')
+
+		const updatedWorker = await this.prisma.worker.update({
+			where: {
+				id: workerId,
+			},
+			data: {
+				name,
+				specialty,
+				avatarUrl,
+				active,
+			},
+		})
+
+		return updatedWorker
 	}
 }
