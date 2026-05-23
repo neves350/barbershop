@@ -1,22 +1,16 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import {
-	IsBoolean,
-	IsEnum,
-	IsNotEmpty,
-	IsOptional,
-	IsString,
-} from 'class-validator'
+import { ApiPropertyOptional } from '@nestjs/swagger'
+import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator'
 import { WorkerSpecialty } from 'src/generated/prisma/client'
 
 export class UpdateWorkerDto {
 	@IsString()
-	@IsNotEmpty()
-	@ApiProperty()
+	@IsOptional()
+	@ApiPropertyOptional()
 	name?: string
 
 	@IsEnum(WorkerSpecialty)
-	@IsNotEmpty()
-	@ApiProperty({ enum: WorkerSpecialty })
+	@IsOptional()
+	@ApiPropertyOptional({ enum: WorkerSpecialty })
 	specialty?: WorkerSpecialty
 
 	@IsString()
@@ -30,7 +24,7 @@ export class UpdateWorkerDto {
 	active?: boolean
 
 	@IsString()
-	@IsNotEmpty()
-	@ApiProperty()
+	@IsOptional()
+	@ApiPropertyOptional()
 	supabaseId?: string
 }
