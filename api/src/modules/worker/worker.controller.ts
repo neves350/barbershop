@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Post,
+	Query,
+	UseGuards,
+} from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { CreateWorkerDto } from './dtos/create-worker.dto'
@@ -27,5 +35,13 @@ export class WorkerController {
 	@ApiOperation({ summary: 'Return all workers' })
 	async findAll(@Query() query: QuerySpecialtyDto) {
 		return this.workerService.findAll(query.specialty)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Get('workers/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Return a specific worker' })
+	async findOne(@Param('id') id: string) {
+		return this.workerService.findOne(id)
 	}
 }
