@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { SupabaseService } from 'src/common/supabase/supabase.service'
+import { WorkerSpecialty } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateWorkerDto } from './dtos/create-worker.dto'
 
@@ -16,6 +17,14 @@ export class WorkerService {
 
 		return this.prisma.worker.create({
 			data: dto,
+		})
+	}
+
+	async findAll(specialty?: WorkerSpecialty) {
+		return this.prisma.worker.findMany({
+			where: {
+				...(specialty && { specialty }),
+			},
 		})
 	}
 }
