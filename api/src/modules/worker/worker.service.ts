@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common'
+import {
+	ConflictException,
+	Injectable,
+	NotFoundException,
+} from '@nestjs/common'
 import { SupabaseService } from 'src/common/supabase/supabase.service'
 import { WorkerSpecialty } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
@@ -14,6 +18,17 @@ export class WorkerService {
 	async create(dto: CreateWorkerDto) {
 		const user = await this.supabase.getUserById(dto.supabaseId)
 		if (!user) throw new NotFoundException('Supabase user not found')
+
+		const existing = await this.prisma.worker.findUnique({
+			where: {
+				supabaseId: dto.supabaseId,
+			},
+		})
+
+		if (existing)
+			throw new ConflictException(
+				'A worker for this Supabase user already exists',
+			)
 
 		return this.prisma.worker.create({
 			data: dto,
