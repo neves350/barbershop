@@ -10,6 +10,13 @@ import {
 	UseGuards,
 } from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
+import {
+	ApiCreateBookingResponses,
+	ApiDeleteBookingResponses,
+	ApiFindAllBookingResponses,
+	ApiFindOneBookingResponses,
+	ApiUpdateBookingResponses,
+} from 'src/common/decorators/booking.decorator'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { BookingService } from './booking.service'
 import { CreateBookingDto } from './dto/create-booking.dto'
@@ -24,6 +31,7 @@ export class BookingController {
 	@Post('bookings')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Creates a new booking' })
+	@ApiCreateBookingResponses()
 	async create(@Body() dto: CreateBookingDto) {
 		const booking = await this.bookingService.create(dto)
 
@@ -37,6 +45,7 @@ export class BookingController {
 	@Get('bookings')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Return all bookings' })
+	@ApiFindAllBookingResponses()
 	async findAll(@Query() query: QueryBookingDto) {
 		return this.bookingService.findAll(query)
 	}
@@ -45,6 +54,7 @@ export class BookingController {
 	@Get('bookings/:id')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Return a specific booking' })
+	@ApiFindOneBookingResponses()
 	async findOne(@Param('id') id: string) {
 		return this.bookingService.findOne(id)
 	}
@@ -53,6 +63,7 @@ export class BookingController {
 	@Patch('bookings/:id')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Update a booking' })
+	@ApiUpdateBookingResponses()
 	async update(@Param('id') id: string, @Body() dto: UpdateBookingDto) {
 		const booking = await this.bookingService.update(id, dto)
 
@@ -66,6 +77,7 @@ export class BookingController {
 	@Delete('bookings/:id')
 	@ApiBearerAuth()
 	@ApiOperation({ summary: 'Delete a booking' })
+	@ApiDeleteBookingResponses()
 	async delete(@Param('id') id: string) {
 		return this.bookingService.delete(id)
 	}
