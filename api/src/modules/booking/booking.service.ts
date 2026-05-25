@@ -45,12 +45,27 @@ export class BookingService {
 		})
 
 		if (!bookings.length) {
-			if (workerId) throw new NotFoundException('This worker does not have any bookings')
-			if (serviceId) throw new NotFoundException('This service does not have any bookings')
+			if (workerId)
+				throw new NotFoundException('This worker does not have any bookings')
+			if (serviceId)
+				throw new NotFoundException('This service does not have any bookings')
 			if (date) throw new NotFoundException('No bookings found on this date')
 			throw new NotFoundException('No bookings found')
 		}
 
 		return bookings
+	}
+
+	async findOne(id: string) {
+		const booking = await this.prisma.booking.findFirst({
+			where: {
+				id,
+			},
+			include: bookingInclude,
+		})
+
+		if (!booking) throw new NotFoundException('Booking not found')
+
+		return booking
 	}
 }

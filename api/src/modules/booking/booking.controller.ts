@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Post,
+	Query,
+	UseGuards,
+} from '@nestjs/common'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { BookingService } from './booking.service'
@@ -28,5 +36,13 @@ export class BookingController {
 	@ApiOperation({ summary: 'Return all bookings' })
 	async findAll(@Query() query: QueryBookingDto) {
 		return this.bookingService.findAll(query)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Get('bookings/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Return a specific booking' })
+	async findOne(@Param('id') id: string) {
+		return this.bookingService.findOne(id)
 	}
 }
