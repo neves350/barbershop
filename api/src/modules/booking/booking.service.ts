@@ -3,6 +3,7 @@ import { BookingStatus } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateBookingDto } from './dto/create-booking.dto'
 import { QueryBookingDto } from './dto/query-booking.dto'
+import { UpdateBookingDto } from './dto/update-booking.dto'
 
 const bookingInclude = {
 	services: { include: { service: true } },
@@ -67,5 +68,23 @@ export class BookingService {
 		if (!booking) throw new NotFoundException('Booking not found')
 
 		return booking
+	}
+
+	async update(id: string, dto: UpdateBookingDto) {
+		const booking = await this.prisma.booking.findFirst({
+			where: {
+				id,
+			},
+		})
+
+		if (!booking) throw new NotFoundException('Booking not found')
+
+		return this.prisma.booking.update({
+			where: {
+				id,
+			},
+			data: dto,
+			include: bookingInclude,
+		})
 	}
 }

@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	Param,
+	Patch,
 	Post,
 	Query,
 	UseGuards,
@@ -12,6 +13,7 @@ import { SupabaseAuthGuard } from 'src/common/guards/supabase-auth.guard'
 import { BookingService } from './booking.service'
 import { CreateBookingDto } from './dto/create-booking.dto'
 import { QueryBookingDto } from './dto/query-booking.dto'
+import { UpdateBookingDto } from './dto/update-booking.dto'
 
 @ApiTags('Bookings')
 @Controller('')
@@ -44,5 +46,18 @@ export class BookingController {
 	@ApiOperation({ summary: 'Return a specific booking' })
 	async findOne(@Param('id') id: string) {
 		return this.bookingService.findOne(id)
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Patch('bookings/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Update a booking' })
+	async update(@Param('id') id: string, @Body() dto: UpdateBookingDto) {
+		const booking = await this.bookingService.update(id, dto)
+
+		return {
+			booking,
+			message: 'Booking updated successfully',
+		}
 	}
 }
