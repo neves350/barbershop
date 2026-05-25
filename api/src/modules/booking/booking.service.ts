@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { BookingStatus } from 'src/generated/prisma/enums'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateBookingDto } from './dto/create-booking.dto'
+import { QueryBookingDto } from './dto/query-booking.dto'
 
 const bookingInclude = {
 	services: { include: { service: true } },
@@ -25,5 +26,31 @@ export class BookingService {
 			},
 			include: bookingInclude,
 		})
+	}
+
+	async findAll(query: QueryBookingDto) {
+		const { workerId, serviceId, date } = query
+
+		const dayStart = date ? new Date(date.setHours(0, 0, 0, 0)) : undefined
+		const dayEnd = date ? new Date(date.setHours(23, 59, 59, 999)) : undefined
+
+		const bookings = await this.prisma.booking.findMany({
+			where: {
+				...(workerId && { workerId }),
+				...(serviceId && { services: { some: { serviceId } } }),
+				...(date && { date: { gte: dayStart, lte: dayEnd } }),
+			},
+			include: bookingInclude,
+			orderBy: { date: 'asc' },
+		})
+
+		if (!bookings.length) {
+			if (workerId) throw new NotFoundException('This worker does not have any bookings')
+			if (serviceId) throw new NotFoundException('This service does not have any bookings')
+			if (date) throw new NotFoundException('No bookings found on this date')
+			throw new NotFoundException('No bookings found')
+		}
+
+		return bookings
 	}
 }
