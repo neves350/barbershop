@@ -87,4 +87,25 @@ export class BookingService {
 			include: bookingInclude,
 		})
 	}
+
+	async delete(id: string) {
+		const booking = await this.prisma.booking.findFirst({
+			where: {
+				id,
+			},
+		})
+
+		if (!booking) throw new NotFoundException('Booking not found')
+
+		await this.prisma.booking.delete({
+			where: {
+				id,
+			},
+		})
+
+		return {
+			message: 'Booking deleted successfully',
+			success: true,
+		}
+	}
 }

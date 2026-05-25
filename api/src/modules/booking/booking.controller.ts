@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	Get,
 	Param,
 	Patch,
@@ -59,5 +60,13 @@ export class BookingController {
 			booking,
 			message: 'Booking updated successfully',
 		}
+	}
+
+	@UseGuards(SupabaseAuthGuard)
+	@Delete('bookings/:id')
+	@ApiBearerAuth()
+	@ApiOperation({ summary: 'Delete a booking' })
+	async delete(@Param('id') id: string) {
+		return this.bookingService.delete(id)
 	}
 }
