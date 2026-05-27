@@ -1,5 +1,5 @@
 import { computed, Injectable, inject, signal } from '@angular/core'
-import { tap } from 'rxjs'
+import { Observable, tap } from 'rxjs'
 import { WorkersApi } from '../../core/api/workers.api'
 import { Worker } from '../../core/models/worker.model'
 
@@ -15,7 +15,7 @@ export class WorkersService {
 
 	readonly hasWorkers = computed(() => this.workers().length > 0)
 
-	loadWorkers() {
+	loadWorkers(): Observable<Worker[]> {
 		this.loading.set(true)
 		this.error.set(null)
 
