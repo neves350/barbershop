@@ -7,3 +7,8 @@ export const mockWorkers = {
 export const mockBookings = {
 	create: vi.fn(),
 }
+
+export const mockServices = {
+	findAll: vi.fn(),
+	findFeatured: vi.fn(),
+}
