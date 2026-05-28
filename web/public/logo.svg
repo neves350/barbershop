@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 280" width="1100" height="280">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF4C2"/>
+      <stop offset="25%" stop-color="#E8C766"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="75%" stop-color="#A8842A"/>
+      <stop offset="100%" stop-color="#6B5318"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="280" fill="none"/>
+  <g transform="translate(120.5,-7.0)">
+    <text x="0" y="210" fill="url(#gold)" font-family="Cormorant Garamond, Garamond, serif">
+      <tspan font-size="200" font-weight="500" font-style="italic">S</tspan><tspan font-size="200" font-weight="500">R</tspan>
+    </text>
+    <line x1="290" y1="80" x2="290" y2="220" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+    <text x="340" y="180" fill="url(#gold)" font-family="Cormorant Garamond, Garamond, serif" font-size="110" font-weight="400" letter-spacing="22">STUDIO</text>
+  </g>
+</svg>

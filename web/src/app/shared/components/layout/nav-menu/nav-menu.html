@@ -1,0 +1,119 @@
+@if (isOpen()) {
+  <div
+    class="nav-menu-enter fixed top-15 inset-x-0 bottom-0 z-40 flex flex-col bg-background-navbar overflow-y-auto lg:hidden border-border border"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navegação"
+  >
+
+    <!-- Nav links -->
+    <nav class="flex-1 px-7.5" aria-label="Navegação principal">
+      <ul class="list-none m-0 p-0">
+        @for (item of navItems; track item.url) {
+          <li>
+            <a
+              routerLinkActive
+              #rla="routerLinkActive"
+              [routerLink]="item.url"
+              class="flex items-center justify-between py-6 border-b border-border no-underline group"
+              >
+              <div>
+                <span class="font-mono font-light text-primary text-xs tracking-wide mr-5">
+                  {{ item.number }}
+                </span>
+                <span
+                  class="font-serif font-light text-foreground text-2xl tracking-wider"
+                  [class.text-primary]="rla.isActive"
+                  [class.text-foreground]="!rla.isActive"
+                >
+                  {{ item.label }}
+                </span>
+              </div>
+              <hugeicons-icon
+                [icon]="arrowIcon"
+                [size]="16"
+                class="text-muted-2"
+                [strokeWidth]="1.5"
+              />
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Bottom section -->
+    <div class="px-7.5 pb-12 pt-6 flex flex-col gap-6 shrink-0">
+      <a class="bg-primary h-10 flex items-center justify-between px-4 font-dm-sans font-light text-[14px] tracking-[0.42px] text-foreground no-underline">
+        Agendar agora
+        <hugeicons-icon [icon]="arrowIcon" [size]="14" class="text-foreground" [strokeWidth]="1.5" />
+      </a>
+
+      <!-- Shop info -->
+      <div class="flex gap-8">
+        <div>
+          <p class="font-mono font-light text-muted-2 text-xs tracking-wider uppercase m-0 mb-2">
+            SALÃO
+          </p>
+          <p class="font-dm-sans font-light text-sm tracking-wide text-foreground m-0">
+            R. Conceição Sameiro Antunes 19A,
+          </p>
+          <p class="font-dm-sans font-light text-sm tracking-wide text-muted-2 m-0">
+            2805-123 Almada
+          </p>
+        </div>
+        <div>
+          <p class="font-mono font-light text-muted-2 text-xs tracking-wider uppercase m-0 mb-2">
+            CONTACTO
+          </p>
+          <p class="font-dm-sans font-light text-sm tracking-wide text-foreground m-0">
+            +351 910 200 300
+          </p>
+          <p class="font-dm-sans font-light text-sm tracking-wide text-foreground m-0">
+            sandrarute@salao.com
+          </p>
+        </div>
+      </div>
+
+      <!-- Social icons -->
+      <div class="flex gap-3" aria-label="Redes sociais">
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          class="border border-border size-8.5 flex items-center justify-center shrink-0"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#95907f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="#95907f" stroke="none" />
+          </svg>
+        </a>
+
+        <a
+          href="https://tiktok.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+          class="border border-border size-8.5 flex items-center justify-center shrink-0"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#95907f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+          </svg>
+        </a>
+
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          class="border border-border size-8.5 flex items-center justify-center shrink-0"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#95907f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+}

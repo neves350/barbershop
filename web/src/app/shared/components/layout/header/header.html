@@ -1,0 +1,82 @@
+<header class="pointer-events-none bg-background-navbar">
+  <div class="pointer-events-auto mx-auto flex w-full max-w-7xl items-center justify-between px-2.5 py-1.5 backdrop-blur-md">
+    <!-- site logo -->
+    <a routerLink="/" aria-label="Página inicial" class="shrink-0 cursor-pointer">
+      <img
+        src="logo.svg"
+        width="200"
+        height="200"
+        alt="SR"
+        class="block"
+      />
+    </a>
+
+    <!-- nav links -->
+    <div class="hidden items-center gap-0.5 md:flex">
+      <a
+        routerLink="/"
+        routerLinkActive
+        #homeLink="routerLinkActive"
+        [class]="homeLink.isActive
+          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
+          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+      >
+        Início
+      </a>
+      <a
+        routerLink="/services"
+        routerLinkActive
+        #projectsLink="routerLinkActive"
+        [class]="projectsLink.isActive
+          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
+          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+      >
+        Serviços
+      </a>
+      <a
+        routerLink="/about-us"
+        routerLinkActive
+        #contactLink="routerLinkActive"
+        [class]="contactLink.isActive
+          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
+          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+      >
+        Sobre
+      </a>
+      <a
+        class="font-dm-sans font-bold text-xs ml-3 tracking-wide text-foreground no-underline bg-primary w-25 h-10 flex items-center justify-center"
+      >
+        AGENDAR
+      </a>
+    </div>
+
+    <!-- hamburguer menu -->
+    <div class="lg:hidden flex items-center gap-1">
+      <button
+        type="button"
+        class="btn btn-ghost btn-sm transition-all duration-300 ease-out"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Abrir menu de navegação"
+      >
+        @if (isMenuOpen()) {
+          <hugeicons-icon
+            [icon]="cancelIcon"
+            [size]="24"
+            [color]="'var(--foreground)'"
+            [strokeWidth]="1.5"
+          ></hugeicons-icon>
+        } @else {
+          <hugeicons-icon
+            [icon]="menuIcon"
+            [size]="24"
+            [color]="'var(--foreground)'"
+            [strokeWidth]="1.5"
+          ></hugeicons-icon>
+        }
+      </button>
+    </div>
+  </div>
+</header>
+
+<app-nav-menu [isOpen]="isMenuOpen()" (closed)="toggleMenu()" />
