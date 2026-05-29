@@ -11,6 +11,7 @@ export interface Service {
 	description: string
 	price: number
 	duration: number // minutes
+	category?: ServiceCategory
 }
 
 export interface ServiceQueryParams {
