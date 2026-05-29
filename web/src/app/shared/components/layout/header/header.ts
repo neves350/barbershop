@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common'
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 import { HugeiconsIconComponent } from '@hugeicons/angular'
@@ -6,7 +7,13 @@ import { NavMenu } from '../nav-menu/nav-menu'
 
 @Component({
 	selector: 'app-header',
-	imports: [HugeiconsIconComponent, NavMenu, RouterLinkActive, RouterLink],
+	imports: [
+		HugeiconsIconComponent,
+		NavMenu,
+		RouterLinkActive,
+		RouterLink,
+		NgOptimizedImage,
+	],
 	templateUrl: './header.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

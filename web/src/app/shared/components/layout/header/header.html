@@ -1,13 +1,14 @@
-<header class="pointer-events-none bg-background-navbar fixed top-0 left-0 right-0 z-50">
-  <div class="pointer-events-auto mx-auto flex w-full max-w-7xl items-center justify-between px-2.5 py-1.5 backdrop-blur-md">
+<header class="pointer-events-none fixed top-0 left-0 right-0 z-50 px-4 md:px-6 pt-3">
+  <div class="pointer-events-auto mx-auto flex w-full max-w-7xl h-15 items-center justify-between px-4 md:px-6 rounded-md border border-border bg-background/20 backdrop-blur-md">
     <!-- site logo -->
     <a routerLink="/" aria-label="Página inicial" class="shrink-0 cursor-pointer">
       <img
-        src="logo.svg"
-        width="200"
-        height="200"
+        ngSrc="logo.svg"
         alt="SR"
-        class="block"
+        width="995"
+        height="280"
+        priority
+        class="h-8 w-auto md:h-10 lg:h-12"
       />
     </a>
 
@@ -18,40 +19,40 @@
         routerLinkActive
         #homeLink="routerLinkActive"
         [class]="homeLink.isActive
-          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
-          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+          ? 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-semibold text-primary transition'
+          : 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-normal text-muted transition hover:text-primary'"
       >
         Início
       </a>
       <a
         routerLink="/services"
         routerLinkActive
-        #projectsLink="routerLinkActive"
-        [class]="projectsLink.isActive
-          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
-          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+        #servicosLink="routerLinkActive"
+        [class]="servicosLink.isActive
+          ? 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-semibold text-primary transition'
+          : 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-normal text-muted transition hover:text-primary'"
       >
         Serviços
       </a>
       <a
         routerLink="/about-us"
         routerLinkActive
-        #contactLink="routerLinkActive"
-        [class]="contactLink.isActive
-          ? 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm transition hover:text-primary/50 border-b-primary border-b-2 text-primary font-semibold'
-          : 'px-3 py-1.5 tracking-wide uppercase font-dm-sans text-sm font-normal text-muted-foreground transition hover:text-primary'"
+        #sobreLink="routerLinkActive"
+        [class]="sobreLink.isActive
+          ? 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-semibold text-primary transition'
+          : 'px-3 py-1.5 font-sans text-sm tracking-wider uppercase font-normal text-muted transition hover:text-primary'"
       >
         Sobre
       </a>
       <a
-        class="font-dm-sans font-bold text-xs ml-3 tracking-wide text-foreground no-underline bg-primary w-25 h-10 flex items-center justify-center"
+        class="font-sans text-sm tracking-wider uppercase ml-3 text-foreground no-underline bg-primary w-25 h-10 flex items-center justify-center rounded-sm cursor-pointer"
       >
-        AGENDAR
+        Marcar
       </a>
     </div>
 
-    <!-- hamburguer menu -->
-    <div class="lg:hidden flex items-center gap-1">
+    <!-- hamburger menu -->
+    <div class="md:hidden flex items-center gap-1">
       <button
         type="button"
         class="btn btn-ghost btn-sm transition-all duration-300 ease-out"
@@ -63,14 +64,14 @@
           <hugeicons-icon
             [icon]="cancelIcon"
             [size]="24"
-            [color]="'var(--foreground)'"
+            [color]="'var(--primary)'"
             [strokeWidth]="1.5"
           ></hugeicons-icon>
         } @else {
           <hugeicons-icon
             [icon]="menuIcon"
             [size]="24"
-            [color]="'var(--foreground)'"
+            [color]="'var(--primary)'"
             [strokeWidth]="1.5"
           ></hugeicons-icon>
         }
