@@ -8,6 +8,7 @@ import { Header } from '@shared/components/layout/header/header'
 	imports: [RouterOutlet, Header, Footer],
 	templateUrl: './app.html',
 	styleUrl: './app.css',
+	host: { class: 'flex flex-col min-h-screen' },
 })
 export class App {
 	protected readonly title = signal('web')
