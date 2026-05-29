@@ -1,0 +1,85 @@
+<section class="bg-background min-h-172.5">
+  <div class="w-full max-w-7xl mx-auto px-6 md:px-2.5 py-24">
+
+    <!-- Section header -->
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-12">
+      <h1 class="font-heading font-light text-[26px] md:text-[34px] text-foreground tracking-wider leading-tight">
+        Serviços em destaque
+      </h1>
+      <a class="flex items-center gap-2 font-sans text-xs md:text-sm text-foreground tracking-[0.03em] underline underline-offset-4 cursor-pointer hover:text-primary transition">
+        VER MENU COMPLETO
+        <hugeicons-icon
+          [icon]="arrowRightIcon"
+          [size]="16"
+          [color]="'var(--foreground)'"
+          [strokeWidth]="1.5"
+        ></hugeicons-icon>
+      </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      @if (loading()) {
+        @for (s of skeletons; track $index) {
+          <div class="bg-card border border-border h-90 md:h-115 animate-pulse rounded-none"></div>
+        }
+      } @else {
+        @for (service of services(); track service.id; let i = $index) {
+          <article class="relative bg-card border border-border flex flex-col min-h-90 md:h-115">
+            <!-- Inner inset border -->
+            <div class="absolute inset-1 border border-border pointer-events-none" aria-hidden="true"></div>
+
+            <div class="relative p-4 flex flex-col flex-1">
+              <!-- Category + number -->
+              <div class="flex items-start justify-between mb-6">
+                <span class="font-mono text-sm font-medium tracking-wider text-primary uppercase">
+                  {{ categoryLabel[service.category!] }}
+                </span>
+                <span class="font-heading font-light text-[64px] leading-none text-primary/60 -mt-2">
+                  {{ (i + 1).toString().padStart(2, '0') }}
+                </span>
+              </div>
+              <h2 class="font-heading text-sm tracking-wider text-foreground mb-3">
+                {{ service.name }}
+              </h2>
+              <p class="font-sans text-xs tracking-wider text-muted-foreground leading-relaxed flex-1">
+                {{ service.description }}
+              </p>
+
+              <!-- Separator -->
+              <hr class="border-border my-4" />
+
+              <!-- duration + price -->
+              <div class="flex flex-col gap-2 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs tracking-[0.03em] text-muted-foreground shrink-0">DURAÇÃO</span>
+                  <div class="flex-1 border-t border-dashed border-border"></div>
+                  <span class="font-heading text-sm tracking-[0.03em] text-foreground shrink-0">{{ service.duration }} min</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs tracking-[0.03em] text-muted-foreground shrink-0">PREÇO</span>
+                  <div class="flex-1 border-t border-dashed border-border"></div>
+                  <span class="font-heading text-sm tracking-[0.03em] text-foreground shrink-0">€{{ service.price }}</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="w-full h-8 bg-foreground text-background font-sans text-xs tracking-[0.03em] flex items-center justify-center gap-2 cursor-pointer hover:opacity-90 transition"
+              >
+                MARCAR
+                <hugeicons-icon
+                  [icon]="arrowRightIcon"
+                  [size]="14"
+                  [color]="'var(--background)'"
+                  [strokeWidth]="1.5"
+                ></hugeicons-icon>
+              </button>
+
+            </div>
+          </article>
+        }
+      }
+    </div>
+  </div>
+</section>
