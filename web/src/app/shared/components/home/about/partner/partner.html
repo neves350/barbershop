@@ -1,0 +1,24 @@
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+  @for (partner of partners; track partner.slug; let i = $index) {
+    <article [class]="i > 0 ? 'md:mt-7.5' : ''">
+      <div class="relative aspect-3/5 md:aspect-auto md:h-140">
+        <img
+          [src]="partner.image"
+          class="w-full h-full object-cover"
+          [alt]="partner.name + ', ' + partner.role"
+        />
+      </div>
+
+      <hr class="mt-4 h-px border-0 bg-border/30" aria-hidden="true" />
+
+      <div class="mt-2 flex items-baseline justify-between">
+        <h3 class="font-heading font-normal text-xl text-primary-foreground">{{ partner.name }}</h3>
+        <span class="font-mono text-xs font-medium tracking-wider text-primary">{{ partner.years }} anos</span>
+      </div>
+
+      <p class="font-mono text-xs font-medium tracking-wider text-primary-foreground/80 mt-1">
+        {{ partner.role }}
+      </p>
+    </article>
+  }
+</div>
